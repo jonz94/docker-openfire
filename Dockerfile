@@ -2,12 +2,13 @@ FROM ubuntu:bionic
 
 LABEL maintainer="jody16888@gmail.com"
 
-# Add our user and group first to make sure their IDs get assigned consistently,
-# regardless of whatever dependencies get added
-RUN groupadd -r openfire && useradd -r -g openfire openfire
-
 ENV OPENFIRE_VERSION=4.3.2 \
     OPENFIRE_USER=openfire
+
+# Add our user and group first to make sure their IDs get assigned consistently,
+# regardless of whatever dependencies get added
+RUN groupadd -r ${OPENFIRE_USER}; \
+    useradd -r -g ${OPENFIRE_USER} ${OPENFIRE_USER}
 
 # Install dependencies
 RUN set -ex; \
@@ -26,7 +27,16 @@ RUN set -ex; \
     apt-get purge -y --auto-remove wget; \
     rm -rf /var/lib/apt/lists/*
 
-EXPOSE 3478/tcp 3479/tcp 5222/tcp 5223/tcp 5229/tcp 7070/tcp 7443/tcp 7777/tcp 9090/tcp 9091/tcp
+EXPOSE 3478/tcp \
+       3479/tcp \
+       5222/tcp \
+       5223/tcp \
+       5229/tcp \
+       7070/tcp \
+       7443/tcp \
+       7777/tcp \
+       9090/tcp \
+       9091/tcp
 
 VOLUME ["/etc/openfire", "/var/lib/openfire", "/var/log/openfire"]
 
