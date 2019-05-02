@@ -32,7 +32,6 @@ $ docker pull jonz94/openfire:latest
     $ docker run \
         --detach \
         --name my_awesome_openfire_container_name \
-        --network host \
         --publish 3478:3478 \
         --publish 3479:3479 \
         --publish 5222:5222 \
