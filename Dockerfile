@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:bionic-20190515
 
 LABEL maintainer="jody16888@gmail.com"
 
