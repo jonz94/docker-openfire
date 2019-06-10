@@ -1,6 +1,6 @@
-FROM ubuntu:bionic-20190515
+FROM ubuntu:18.04
 
-LABEL maintainer="jody16888@gmail.com"
+LABEL maintainer="jonz94 <jody16888@gmail.com>"
 
 ENV OPENFIRE_VERSION=4.3.2 \
     OPENFIRE_USER=openfire

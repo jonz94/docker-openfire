@@ -1,7 +1,5 @@
-all: build
+VERSION = $(shell cat VERSION)
 
-build:
-	@docker build --tag=jonz94/openfire .
-
-release: build
-	@docker build --tag=jonz94/openfire:$(shell cat VERSION) .
+release:
+	@git tag -a $(VERSION) -m $(VERSION)
+	@git push --tags
